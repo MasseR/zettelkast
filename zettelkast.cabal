@@ -1,0 +1,63 @@
+cabal-version:       2.4
+
+name:                zettelkast
+version:             0.1.0.0
+-- synopsis:
+-- description:
+-- bug-reports:
+license:             BSD-3-Clause
+license-file:        LICENSE
+author:              Mats Rauhala
+maintainer:          mats.rauhala@iki.fi
+-- copyright:
+category:            Text
+extra-source-files:  CHANGELOG.md
+
+library
+  exposed-modules:     Data.ZettelID
+                       Data.ZettelPath
+                       Data.ZettelMeta
+                       Data.Zettel
+                       Data.Path
+                       Data.ZettelGraph
+  -- other-modules:
+  -- other-extensions:
+  build-depends:       base ^>=4.12.0.0
+                     , mtl
+                     , process
+                     , text
+                     , filepath
+                     , lens
+                     , generic-lens
+                     , containers
+                     , time
+                     , directory
+                     , pointed
+                     , pandoc
+                     , pandoc-types
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+
+executable zettelkast
+  main-is:             Main.hs
+  -- other-modules:
+  -- other-extensions:
+  build-depends:       base ^>=4.12.0.0
+                     , zettelkast
+                     , optparse-generic
+                     , process
+                     , time
+                     , containers
+                     , directory
+                     , text
+                     , lens
+                     , transformers
+  hs-source-dirs:      app
+  default-language:    Haskell2010
+
+test-suite zettelkast-test
+  default-language:    Haskell2010
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             MyLibTest.hs
+  build-depends:       base ^>=4.12.0.0
