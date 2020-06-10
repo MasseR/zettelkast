@@ -11,3 +11,4 @@ jobs:
     - run: nix run nixpkgs.hlint -c hlint .
     - run: nix-shell --run ./restyle.sh
     - run: git diff --exit-code
+    - run: nix-build release.nix
