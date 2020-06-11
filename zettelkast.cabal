@@ -2,8 +2,11 @@ cabal-version:       2.4
 
 name:                zettelkast
 version:             0.1.0.0
--- synopsis:
-description: Command-line utility for working with zettelkast files
+synopsis: Command-line utility for working with zettelkast files
+description:
+  Command-line tool for managing zettelkast documents. The tool primarily focuses
+  on providing unique ids and showing a graph of document connections. It tries
+  to be as unintrusive as possible.
 -- bug-reports:
 license:             BSD-3-Clause
 license-file:        LICENSE
@@ -12,6 +15,10 @@ maintainer:          mats.rauhala@iki.fi
 -- copyright:
 category:            Text
 extra-source-files:  CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/MasseR/zettelkast
 
 library
   exposed-modules:     Data.ZettelID
