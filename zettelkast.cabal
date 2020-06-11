@@ -61,6 +61,7 @@ executable zettelkast
                      , transformers >= 0.5.6 && < 0.6
   hs-source-dirs:      app
   default-language:    Haskell2010
+  ghc-options:       -threaded
 
 test-suite zettelkast-test
   default-language:    Haskell2010
