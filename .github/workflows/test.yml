@@ -5,10 +5,13 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        channel: [19.03, 19.09, 20.03]
     steps:
     - uses: actions/checkout@v1
     - uses: cachix/install-nix-action@v6
     - run: nix run nixpkgs.hlint -c hlint .
-    - run: nix-build release.nix -I nixpkgs=channel:nixos-20.03
-    - run: nix-shell -I nixpkgs=channel:nixos-20.03 --run ./restyle.sh
+    - run: nix-build release.nix -I nixpkgs=channel:nixos-${{ matrix.channel }}
+    - run: nix-shell -I nixpkgs=channel:nixos-${{ matrix.channel }} --run ./restyle.sh
     - run: git diff --exit-code
