@@ -17,7 +17,7 @@ import System.Environment
 import qualified Data.Text.IO as T
 
 import Data.Maybe
-       (fromMaybe)
+       (catMaybes, fromMaybe)
 
 import Data.Path
 import Data.Zettel
@@ -31,6 +31,8 @@ import qualified Data.Set as Set
 
 import Data.Foldable
        (for_, traverse_)
+import Data.List
+       (sortOn)
 import Data.Traversable
        (for)
 
@@ -95,7 +97,7 @@ list base = do
     zid <- MaybeT (pure mzid)
     zettel <- MaybeT (either (const Nothing) pure <$> readZettel base zid)
     MaybeT $ pure $ zettelMeta zid zettel
-  traverse_ (traverse_ (T.putStrLn . format)) meta
+  traverse_ (T.putStrLn . format) . sortOn zettelID . catMaybes $ meta
   where
     format :: ZettelMeta -> Text
     format ZettelMeta{..} = render zettelID <> ":\t\t" <> title
