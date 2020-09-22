@@ -1,6 +1,6 @@
-{-# LANGUAGE RecordWildCards #-}
 {-# LANGUAGE LambdaCase #-}
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
 {-# LANGUAGE ViewPatterns #-}
 module Data.ZettelGraph where
 
@@ -43,7 +43,7 @@ zettelLinks base = do
 
 extractLink :: Inline -> [ZettelID]
 extractLink = \case
-  Link _ _ (u, _) -> catMaybes [fromPath (path u)]
+  Link _ _ (u, _) -> catMaybes [fromPath (path $ T.unpack u)]
   _ -> []
   where
     path = file . T.pack . takeFileName

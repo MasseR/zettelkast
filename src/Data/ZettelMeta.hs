@@ -25,7 +25,7 @@ extractTitle = \case
   _ -> []
   where
     strings = \case
-      Str x -> [T.pack x]
+      Str x -> [x]
       _ -> []
 
 zettelMeta :: ZettelID -> Pandoc -> Maybe ZettelMeta
