@@ -1,7 +1,7 @@
 cabal-version:       2.4
 
 name:                zettelkast
-version:             0.1.0.0
+version:             0.2.0.0
 synopsis: Command-line utility for working with zettelkast files
 description:
   Command-line tool for managing zettelkast documents. The tool primarily focuses
